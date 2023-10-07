@@ -1,0 +1,225 @@
+<!--
+	Author: Elai Joubert
+-->
+
+<!DOCTYPE html>
+<html lang="">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+			rel="stylesheet"
+		/>
+		<title>Learning car</title>
+
+		<script src="p5.min.js"></script>
+		<script src="sketch.js"></script>
+		<script src="Vehicle.js"></script>
+		<script src="Player.js"></script>
+		<script src="DOM_elements.js"></script>
+
+		<!-- Libraries such as matrix.js and the neural network code -->
+		<script src="lib\nn.js"></script>
+
+		<script src="lib\matrix.js"></script>
+
+		<script src="Genetic algorithm.js"></script>
+	</head>
+
+	<body>
+		<div class="running-interface">
+			<p class="frameRate-holder">60</p>
+			<p class="generationP">Generation: 0</p>
+
+			<input type="button" class="dud-button button" value="Dud" />
+			<input
+				type="button"
+				class="saveBest-button button"
+				value="Save Best Vehicle"
+			/>
+			<input
+				type="button"
+				class="joinIn-button button"
+				value="Enter race"
+			/>
+
+			<input type="color" name="picker" class="myColor" />
+
+			<label class="container"
+				>Debug info
+				<input type="checkbox" class="debug-checkBox checkBox" />
+				<span class="checkmark"></span>
+			</label>
+
+			<label class="container"
+				>Stop learning
+				<input type="checkbox" class="stop-checkBox checkBox" />
+				<span class="checkmark"></span>
+			</label>
+
+			<label class="container"
+				>Best only
+				<input type="checkbox" class="bestOnly-checkBox checkBox" />
+				<span class="checkmark"></span>
+			</label>
+			<p class="drop-car-data">Drop AI data here</p>
+		</div>
+
+		<div class="entire-slideshow">
+			<!-- Slideshow container -->
+			<div class="Slideshow-container">
+				<!-- Full-width images with number and caption text -->
+				<div class="mySlides fade">
+					<div class="numbertext">1/3</div>
+
+					<img
+						src="data/Race_tracks/Racetrack1.png"
+						alt="The first racetrack made"
+						onclick="newTrack(slideIndex)"
+						class="racetrack-img"
+					/>
+
+					<div class="text">Track 1: Beginner</div>
+				</div>
+
+				<div class="mySlides fade">
+					<div class="numbertext">2/3</div>
+
+					<img
+						src="data/Race_tracks/Racetrack2.png"
+						alt="Second track"
+						onclick="newTrack(slideIndex)"
+						class="racetrack-img"
+					/>
+
+					<div class="text">Track 2: Less Beginner</div>
+				</div>
+
+				<div class="mySlides fade">
+					<div class="numbertext">3/3</div>
+
+					<img
+						src="data/Race_tracks/Racetrack3.png"
+						alt="Third track"
+						onclick="newTrack(slideIndex)"
+						class="racetrack-img"
+					/>
+
+					<div class="text">Track 3: Intermediate</div>
+				</div>
+
+				<!-- Next and previous buttons -->
+				<a class="prev" onclick="plusSides(-1)">&#10094;</a>
+				<a class="next" onclick="plusSides(1)">&#10095;</a>
+			</div>
+			<br />
+
+			<!-- The dots/circles -->
+			<div style="text-align: center">
+				<span class="dot" onclick="currentSlide(1)"></span>
+				<span class="dot" onclick="currentSlide(2)"></span>
+				<span class="dot" onclick="currentSlide(3)"></span>
+			</div>
+		</div>
+
+		<div class="tutorial">
+			<h1><u>What you should know</u></h1>
+			<p>
+				This website/program is a machine learning program that teaches
+				vehicles how to drive on their own. The program uses a gentic
+				algorithm that chooses the best out of the group and passes its
+				genes onto the next generation.
+			</p>
+			<h2>What are all these buttons?</h2>
+			<p>
+				Dud:<br />Sometimes the starting generation doesn't really work
+				out and the vehicles never learn anything. If at around
+				generation 15 the vehicles have made little to no progress,
+				press this button to get a fresh batch of new ones (this
+				restarts the learning but is worth it).
+			</p>
+			<p>
+				Save Best Vehicle:<br />This button saves the genes of the best
+				vehicle of the previous generation. This is how you can save
+				your own AI and can be used again. More on this later on.
+			</p>
+			<p>
+				Enter Race:<br />Man vs. Machine. Once you crash, you'll be
+				kicked off the track and will have to press the button again to
+				get back in. The button next to this lets <b>you</b> pick the
+				colour of your vehicle. Join in on the race track and compare
+				yourself to the bots. How long till they beat you? 10
+				generations? 20? 50? Use "WASD" to steer to victory!
+			</p>
+			<p>
+				Debug info:<br />This checkbox lets you see how the AI sees, its
+				very messy and slows down the framerate if your not viewing best
+				only. Just keep that in mind.
+			</p>
+			<p>
+				Stop learning:<br />This stops the learning process and lets the
+				AI roam free on the track. Good for identifying the fastest one
+				and to see if they can do multiple laps
+			</p>
+			<p>
+				Best only:<br />Shows only the best of the previous batch.
+				Provides much cleaner visuals and 1v1 racing.
+			</p>
+			<p>
+				Drop AI data here:<br />Last but far from least, this is where
+				you can drag and drop previously saved genes from before. With
+				this you can train your AI on different tracks to create the
+				ultimate vehicle. Enjoy!
+			</p>
+			<h2>Selecting a track</h2>
+			<p>
+				Next to all the buttons is an image of the track. This is
+				actually a track selection menu and the arrows can be used to
+				cycle through all the available tracks. After you have chosen
+				one, click on it and the track will change. This resets all the
+				vehicles and you'll have to upload a previously trained one if
+				you want an already-trained vehicle on the track. A
+				track-designer is being made as we speak which will allow you to
+				design and save your own track.
+			</p>
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		var slideIndex = 1;
+		showSlides(slideIndex);
+
+		function showSlides(n) {
+			var slides = document.getElementsByClassName("mySlides");
+			var dots = document.getElementsByClassName("dot");
+
+			slideIndex = n;
+			if (n < 1) slideIndex = slides.length;
+			if (n > slides.length) slideIndex = 1;
+
+			for (let i = 0; i < slides.length; i++) {
+				slides[i].style.display = "none";
+			}
+
+			for (let i = 0; i < dots.length; i++) {
+				dots[i].className.replace(" active", "");
+			}
+
+			slides[slideIndex - 1].style.display = "block";
+			dots[slideIndex - 1].className += " active";
+		}
+
+		//Auto choose slide
+		function currentSlide(n) {
+			showSlides(n);
+		}
+
+		//Next/prev slide
+		function plusSides(n) {
+			showSlides(slideIndex + n);
+		}
+	</script>
+</html>

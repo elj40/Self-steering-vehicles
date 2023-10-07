@@ -1,0 +1,256 @@
+/*
+	Author: Elai Joubert
+*/
+
+body {
+	background-color: #313131;
+	color: #fff;
+	font-family: "Roboto", sans-serif;
+	display: grid;
+	grid-template-columns: 45% auto;
+	grid-row-gap: 3vh;
+}
+
+.drop-car-data {
+	font-size: 24px;
+	color: #fff;
+	border: 2px dashed #fff;
+	padding-top: 8%;
+	padding-bottom: 8%;
+	width: 90%;
+	text-align: center;
+}
+
+.p5Canvas {
+	grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row-start: 1;
+	grid-row-end: 2;
+}
+
+.tutorial {
+	grid-column-start: 1;
+	grid-column-end: 3;
+}
+
+.tutorial h1 {
+	color: #4caf50;
+}
+
+.tutorial h2 {
+	color: #2196f3;
+}
+
+/* Customize the label (the container) */
+.running-interface .container {
+	display: block;
+	position: relative;
+	padding-left: 30px;
+	margin-bottom: 8px;
+	cursor: pointer;
+	font-size: 16px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	width: 100px;
+}
+
+/* Hide the browser's default checkbox */
+.running-interface .container input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	top: 0;
+	left: 0;
+	background-color: #eee;
+	border-radius: 3px;
+}
+
+/* On mouse-over, add a grey background color */
+.running-interface .container:hover input ~ .checkmark {
+	background-color: #bbb;
+}
+
+/* When the checkbox is checked, add a blue background */
+.running-interface .container input:checked ~ .checkmark {
+	background-color: #2196f3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+
+/* Show the checkmark when checked */
+.running-interface .container input:checked ~ .checkmark:after {
+	display: block;
+}
+
+/* Style the checkmark/indicator */
+.running-interface .container .checkmark:after {
+	left: 6px;
+	top: 4px;
+	width: 4px;
+	height: 8px;
+	border: solid white;
+	border-width: 0 3px 3px 0;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+.button {
+	text-decoration: none;
+	background-color: #4caf50;
+	border: solid #4caf50;
+	border-radius: 3px;
+	text-align: center;
+	padding: 7px 15px;
+	display: inline-block;
+	font-size: 24px;
+	cursor: pointer;
+	color: white;
+	margin-bottom: 10px;
+}
+
+/*Color picker*/
+.myColor {
+	width: 24px;
+	height: 24px;
+	padding: 10px;
+	background-color: rgba(100,100,255,0.8); 
+	border-color: rgba(100,100,255,0.8);
+	border-radius: 2px;
+}
+
+/* Slideshow stuff */
+.entire-slideshow {
+	box-sizing: border-box;
+}
+
+/* Slideshow container */
+.slideshow-container {
+	max-width: 1000px;
+	margin: auto;
+	position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+	display: none;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+	cursor: pointer;
+	position: relative;
+	bottom: 300px;
+	left: 24px;
+	width: auto;
+	margin-top: 0px;
+	padding: 16px;
+	color: white;
+	font-weight: bold;
+	font-size: 20px;
+	transition: 0.6s ease;
+	user-select: none;
+	border-radius: 0 3px 3px 0;
+}
+
+/* Position the "next button" to the right */
+.next {
+	left: 635px;
+	border-radius: 3px 0 0 3px;
+}
+
+/* On hover give blue background with see thru */
+.prev:hover,
+.next:hover {
+	background-color: rgba(100, 100, 255, 0.8);
+}
+
+/* Caption text */
+.text {
+	color: #f4f4f4;
+	font-size: 15px;
+	padding: 8px 12px;
+	position: relative;
+	bottom: 8px;
+	width: 100%;
+	text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+	color: #f4f4f4;
+	font-size: 12px;
+	padding: 8px 12px;
+	position: relative;
+	top: 1%;
+	width:100%;
+	text-align: center;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+	cursor: pointer;
+	height: 10px;
+	width: 10px;
+	border-radius: 50%;
+	background-color: #bbb;
+	display: inline-block;
+	transition: background-color 0.6s ease;
+}
+
+.active,
+.dot:hover {
+	background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+	-webkit-animation-name: fade;
+	-webkit-animation-duration: 1s;
+	animation-name: fade;
+	animation-duration: 1s;
+}
+
+@-webkit-keyframes fade {
+	from {
+		opacity: 0.7;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fade {
+	from {
+		opacity: 0.7;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+/* Image in slideshow */
+.racetrack-img {
+	width: 600px;
+	position: relative;
+	padding: 0;
+	left: 10%;
+	border-radius: 8px;
+}
